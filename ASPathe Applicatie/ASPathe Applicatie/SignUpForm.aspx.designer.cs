@@ -31,6 +31,24 @@ namespace ASPathe_Applicatie {
         protected global::System.Web.UI.WebControls.Label lblSignUp;
         
         /// <summary>
+        /// lblID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblID;
+        
+        /// <summary>
+        /// tbID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbID;
+        
+        /// <summary>
         /// lblVoornaam control.
         /// </summary>
         /// <remarks>
@@ -49,6 +67,24 @@ namespace ASPathe_Applicatie {
         protected global::System.Web.UI.WebControls.TextBox tbVoornaam;
         
         /// <summary>
+        /// lblTussenvoegsel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTussenvoegsel;
+        
+        /// <summary>
+        /// tbTussenvoegsel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbTussenvoegsel;
+        
+        /// <summary>
         /// lblAchternaam control.
         /// </summary>
         /// <remarks>
@@ -65,6 +101,33 @@ namespace ASPathe_Applicatie {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbAchternaam;
+        
+        /// <summary>
+        /// lblGeboortedatum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblGeboortedatum;
+        
+        /// <summary>
+        /// tbGeboortedatum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbGeboortedatum;
+        
+        /// <summary>
+        /// Calendar1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar Calendar1;
         
         /// <summary>
         /// lblGebruikersnaam control.

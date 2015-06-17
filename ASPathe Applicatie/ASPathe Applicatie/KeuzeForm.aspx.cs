@@ -13,5 +13,28 @@ namespace ASPathe_Applicatie
         {
 
         }
+
+        protected void btnUitloggen_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("InlogForm.aspx");
+        }
+
+        protected void btnBeheren_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("BeheerForm.aspx");
+
+        }
+
+        protected void btnKoppelen_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("KoppelForm.aspx");
+
+        }
+
+        protected void btnOverzicht_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("OverzichtForm.aspx");
+
+        }
     }
 }

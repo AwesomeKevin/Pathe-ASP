@@ -13,5 +13,10 @@ namespace ASPathe_Applicatie
         {
 
         }
+
+        protected void btnUitloggen_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("InlogForm.aspx");
+        }
     }
 }

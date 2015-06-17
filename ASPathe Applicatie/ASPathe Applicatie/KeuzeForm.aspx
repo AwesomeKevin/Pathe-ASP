@@ -13,13 +13,18 @@
         <asp:Label ID="lblInfo" runat="server" Text="Kies hier het systeem dat u wilt gebruiken"></asp:Label>
         <br />
         <br />
-        <asp:Button ID="btnBeheren" runat="server" Text="Beheren" />
+        <asp:Button ID="btnBeheren" runat="server" Text="Beheren" OnClick="btnBeheren_Click" />
         <br />
         <br />
-        <asp:Button ID="btnKoppelen" runat="server" Text="Koppelen" />
+        <asp:Button ID="btnKoppelen" runat="server" Text="Koppelen" OnClick="btnKoppelen_Click" />
         <br />
         <br />
-        <asp:Button ID="btnOverzicht" runat="server" Text="Overzicht" />
+        <asp:Button ID="btnOverzicht" runat="server" Text="Overzicht" OnClick="btnOverzicht_Click" />
+        <br />
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="btnUitloggen" runat="server" OnClick="btnUitloggen_Click" Text="Uitloggen" />
         <br />
     
     </div>

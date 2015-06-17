@@ -75,6 +75,33 @@ namespace ASPathe_Applicatie
             return null;
         }
 
+        public string VraagHoogsteIDOp()
+        {
+            string hoogsteID = "";
+
+            try
+            {
+                conn.Open();
+                string query = "SELECT * FROM PERSOON";
+                command = new OracleCommand(query, conn);
+                OracleDataReader datareader = command.ExecuteReader();
+                while (datareader.Read())
+                {
+                    string id = Convert.ToString(datareader["MAX(ID)"]);
+                    hoogsteID = id;
+                }
+                return hoogsteID;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         public List<Bioscoop> HaalBioscopenOp()
         {
             try

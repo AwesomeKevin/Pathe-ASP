@@ -26,6 +26,10 @@
         <br />
         <asp:ListBox ID="lbFilms" runat="server" Height="200px" Width="450px"></asp:ListBox>
     
+        <br />
+        <br />
+        <asp:Button ID="btnUitloggen" runat="server" OnClick="btnUitloggen_Click" Text="Uitloggen" />
+    
     </div>
     </form>
 </body>

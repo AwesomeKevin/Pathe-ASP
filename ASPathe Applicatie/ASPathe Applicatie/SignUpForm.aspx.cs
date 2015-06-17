@@ -38,27 +38,39 @@ namespace ASPathe_Applicatie
 
         protected void btnSignUp_Click(object sender, EventArgs e)
         {
-            if (tbVoornaam.Text != "")
+            if (tbID.Text != "")
             {
-                if (tbAchternaam.Text != "")
+                if (Convert.ToInt32(tbID.Text) > Convert.ToInt32(database.VraagHoogsteIDOp()))
                 {
-                    if (tbGebruikersnaam.Text != "")
+                    if (tbVoornaam.Text != "")
                     {
-                        if (tbWachtwoord.Text != "")
+                        if (tbAchternaam.Text != "")
                         {
-                            if (tbEmail.Text != "")
+                            if (tbGeboortedatum.Text != "")
                             {
+                                if (tbGebruikersnaam.Text != "")
+                                {
+                                    if (tbWachtwoord.Text != "")
+                                    {
+                                        if (tbEmail.Text != "")
+                                        {
 
+                                        }
+                                        GeefMessage("Voer een email in");
+                                    }
+                                    GeefMessage("Voer een wachtwoord in");
+                                }
+                                GeefMessage("Voer een gebruikersnaam in");
                             }
-                            GeefMessage("Voer een email in");
+                            GeefMessage("Voer een geboortedatum in");
                         }
-                        GeefMessage("Voer een wachtwoord in");
+                        GeefMessage("Voer een achternaam in");
                     }
-                    GeefMessage("Voer een gebruikersnaam in");
+                    GeefMessage("Voer een Voornaam in");
                 }
-                GeefMessage("Voer een achternaam in");
+                GeefMessage("Dit ID bestaat al");
             }
-            GeefMessage("Voer een voornaam in");
+            GeefMessage("Voer een ID in");
         }
     }
 }

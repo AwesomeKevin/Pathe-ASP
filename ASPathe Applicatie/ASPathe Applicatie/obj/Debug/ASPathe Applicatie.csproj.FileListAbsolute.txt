@@ -6,3 +6,11 @@ c:\users\kevin kopp\documents\visual studio 2013\Projects\ASPathe Applicatie\ASP
 c:\users\kevin kopp\documents\visual studio 2013\Projects\ASPathe Applicatie\ASPathe Applicatie\obj\Debug\ASPathe Applicatie.pdb
 C:\Users\Kevin Kopp\documents\visual studio 2013\Projects\ASPathe Applicatie\ASPathe Applicatie\obj\Debug\Interop.ORADCLib.dll
 C:\Users\Kevin Kopp\documents\visual studio 2013\Projects\ASPathe Applicatie\ASPathe Applicatie\obj\Debug\ASPathe Applicatie.csproj.ResolveComReference.cache
+C:\Users\Kevin Kopp\Documents\GitHub\Pathe-ASP\ASPathe Applicatie\ASPathe Applicatie\bin\ASPathe Applicatie.dll.config
+C:\Users\Kevin Kopp\Documents\GitHub\Pathe-ASP\ASPathe Applicatie\ASPathe Applicatie\bin\ASPathe Applicatie.dll
+C:\Users\Kevin Kopp\Documents\GitHub\Pathe-ASP\ASPathe Applicatie\ASPathe Applicatie\bin\ASPathe Applicatie.pdb
+C:\Users\Kevin Kopp\Documents\GitHub\Pathe-ASP\ASPathe Applicatie\ASPathe Applicatie\obj\Debug\ASPathe Applicatie.csprojResolveAssemblyReference.cache
+C:\Users\Kevin Kopp\Documents\GitHub\Pathe-ASP\ASPathe Applicatie\ASPathe Applicatie\obj\Debug\Interop.ORADCLib.dll
+C:\Users\Kevin Kopp\Documents\GitHub\Pathe-ASP\ASPathe Applicatie\ASPathe Applicatie\obj\Debug\ASPathe Applicatie.csproj.ResolveComReference.cache
+C:\Users\Kevin Kopp\Documents\GitHub\Pathe-ASP\ASPathe Applicatie\ASPathe Applicatie\obj\Debug\ASPathe Applicatie.dll
+C:\Users\Kevin Kopp\Documents\GitHub\Pathe-ASP\ASPathe Applicatie\ASPathe Applicatie\obj\Debug\ASPathe Applicatie.pdb
