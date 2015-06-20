@@ -50,7 +50,7 @@ namespace ASPathe_Applicatie
                             {
                                 if (tbEmail.Text != "")
                                 {
-                                    int id = database.VraagHoogsteIDOp() + 1;
+                                    int id = database.VraagHoogstePersoonIDOp() + 1;
                                     string voornaam = tbVoornaam.Text;
                                     string tussenvoegsel = null;
                                     if (tbTussenvoegsel.Text == "")
@@ -62,7 +62,7 @@ namespace ASPathe_Applicatie
                                     string geboortedatum = tbGeboortedatum.Text;
                                     string wachtwoord = tbWachtwoord.Text;
                                     string email = tbEmail.Text;
-                                    database.MaakNieuwePersoon(id, voornaam, tussenvoegsel, achternaam, geboortedatum, wachtwoord, email);
+                                    database.VoegPersoonToe(id, voornaam, tussenvoegsel, achternaam, geboortedatum, wachtwoord, email);
                                     GeefMessage("Nieuwe persoon aangemaakt");
                                 }
                                 GeefMessage("Voer een email in");

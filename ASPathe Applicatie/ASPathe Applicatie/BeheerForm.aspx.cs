@@ -63,10 +63,7 @@ namespace ASPathe_Applicatie
             string adres = tbAdres.Text;
             string postcode = tbPostcode.Text;
             databasekoppeling.VoegBioscoopToe(bioscoopnaam, plaats, adres, postcode);
-            foreach (Bioscoop b in bioscopen)
-            {
-                lbBioscopen.Items.Add(b.Bioscoopnaam);
-            }
+            RefreshAlles();
         }
 
         protected void btnMaakActeurAan_Click(object sender, EventArgs e)
@@ -82,6 +79,7 @@ namespace ASPathe_Applicatie
                         string achternaam = tbAchternaam.Text;
                         string geboortedatum = tbGeboortedatum.Text;
                         databasekoppeling.VoegActeurToe(id, voornaam, achternaam, geboortedatum);
+                        RefreshAlles();
                         GeefMessage("Achteur aangemaakt");
                     }
                     GeefMessage("Voer een geboortedatum in");

@@ -36,38 +36,6 @@ namespace ASPathe_Applicatie
         }
 
         //Methodes
-        //Deze methode haalt alle personen op uit de database
-        public List<Persoon> HaalAllePersonenOp()
-        {
-            List<Persoon> tempPersonen = new List<Persoon>();
-
-            try
-            {
-                conn.Open();
-                string query = "SELECT * FROM PERSOON";
-                command = new OracleCommand(query, conn);
-                OracleDataReader datareader = command.ExecuteReader();
-                while (datareader.Read())
-                {
-                    string voornaam = Convert.ToString(datareader["voornaam"]);
-                    string achternaam = Convert.ToString(datareader["achternaam"]);
-                    string gebruikersnaam = Convert.ToString(datareader["voornaam"]); //De voornaam en achternaam gebruik ik als
-                    string wachtwoord = Convert.ToString(datareader["achternaam"]); //als gebruikersnaam en wachtwoord voor het gemak
-                    string email = Convert.ToString(datareader["mailadres"]);
-                    tempPersonen.Add(new Persoon(voornaam, achternaam, gebruikersnaam, wachtwoord, email));
-                }
-                return tempPersonen;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
-
         //Deze methode checkt of de gebruikersnaam bestaat en retourneert de persoon die gevonden is
         public Persoon CheckGebruikersnaam(string naam)
         {
@@ -81,8 +49,106 @@ namespace ASPathe_Applicatie
             return null;
         }
 
+        //Hieronder beginnen de VoegToe methodes
+        //Deze methode voegt een bioscoop toe
+        public bool VoegBioscoopToe(string bioscoopnaam, string plaats, string adres, string postcode)
+        {
+            try
+            {
+                conn.Open();
+                string query = "INSERT INTO BIOSCOOP(Bioscoopnaam, Plaats, Adres, Postcode, DoordeweekseOpeningstijd, DoordeweekseSluitingstijd, WeekendOpeningstijd, WeekendSluitingstijd, bereikbaarheid) VALUES('" + bioscoopnaam + "', '" + plaats + "', '" + adres + "', '" + postcode + "', '10:45', '22:30', '10:30', '23:00', '')";
+                command = new OracleCommand(query, conn);
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+
+            }
+            return false;
+        }
+
+        //Deze methode voegt een acteur toe
+        public bool VoegActeurToe(int id, string voornaam, string achternaam, string geboortedatum)
+        {
+            try
+            {
+                conn.Open();
+                string query = "INSERT INTO ACTEUR(ID, Voornaam, Achternaam, Geboortedatum) VALUES(" + id + ", '" + voornaam + "', '" + achternaam + "', '" + geboortedatum + "')";
+                command = new OracleCommand(query, conn);
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+
+            }
+            return false;
+        }
+
+        //Deze methode maakt een nieuwe persoon aan. (werkt alleen niet)
+        public bool VoegPersoonToe(int id, string voornaam, string tussenvoegsel, string achternaam, string geboortedatum, string wachtwoord, string email)
+        {
+            try
+            {
+                conn.Open();
+                string query = "INSERT INTO PERSOON(ID, Voornaam, Tussenvoegsel, Achternaam, Geboortedatum, Geslacht, Mailadres, Wachtwoord, WilWekelijkseNiewsbrief, Foto) VALUES(" + id + ", '" + voornaam + "', '" + tussenvoegsel + "', '" + achternaam + "', '" + geboortedatum + "', 'man', '" + email + "', '" + wachtwoord + "', 'nee', '')";
+                command = new OracleCommand(query, conn);
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+
+            }
+            return false;
+        }
+
+        //Jieronder beginnen de VraagHoogsteIDOp methodes
+        //Deze methode vraagt het hoogste id op van een achteur
+        public int VraagHoogsteActeurIDOp()
+        {
+            int hoogsteID = 0;
+
+            try
+            {
+                conn.Open();
+                string query = "SELECT * FROM ACTEUR WHERE ID = (SELECT MAX(ID) FROM ACTEUR)";
+                command = new OracleCommand(query, conn);
+                OracleDataReader datareader = command.ExecuteReader();
+                while (datareader.Read())
+                {
+                    hoogsteID = Convert.ToInt32(datareader["ID"]);
+                }
+                return hoogsteID;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         //Deze methode geeft het hoogste id van een persoon terug
-        public int VraagHoogsteIDOp()
+        public int VraagHoogstePersoonIDOp()
         {
             int hoogsteID = 0;
 
@@ -108,40 +174,7 @@ namespace ASPathe_Applicatie
             }
         }
 
-        //Deze methode maakt een nieuwe persoon aan. (werkt alleen niet)
-        public bool MaakNieuwePersoon(int id, string voornaam, string tussenvoegsel, string achternaam, string geboortedatum, string wachtwoord, string email)
-        {
-            try
-            {
-                conn.Open();
-                string query = "INSERT INTO PERSOON(ID, Voornaam, Tussenvoegsel, Achternaam, Geboortedatum, Geslacht, Mailadres, Wachtwoord, WilWekelijkseNiewsbrief, Foto)"  +
-                    "VALUES (:ID, :Voornaam, :Tussenvoegsel, :Geboortedatum, :Geslacht, :Mailadres, :Wachtwoord, :WilWekelijkseNiewsbrief, :Foto)";
-                command = new OracleCommand(query, conn);
-                command.Parameters.Add("ID", id);
-                command.Parameters.Add("Voornaam", voornaam);
-                command.Parameters.Add("Tussenvoegsel", tussenvoegsel);
-                command.Parameters.Add("Achternaam", achternaam);
-                command.Parameters.Add("Geboortedatum", geboortedatum);
-                command.Parameters.Add("Geslacht", "man");
-                command.Parameters.Add("Mailadres", email);
-                command.Parameters.Add("Wachtwoord", wachtwoord);
-                command.Parameters.Add("WilWekelijkseNiewsbrief", "nee");
-                command.Parameters.Add("Foto", "niks");
-                command.ExecuteNonQuery();
-                return true;
-            }
-            catch (Exception)
-            {
-
-            }
-            finally
-            {
-                conn.Close();
-
-            }
-            return false;
-        }
-
+        //Hieronder staan de HaalOp methodes
         //Deze methode haalt alle bioscopen op uit de database en geeft ze terug in een lijst
         public List<Bioscoop> HaalBioscopenOp()
         {
@@ -170,70 +203,6 @@ namespace ASPathe_Applicatie
             {
                 conn.Close();
             }
-        }
-
-        //Deze methode voegt een bioscoop toe
-        public bool VoegBioscoopToe(string bioscoopnaam, string plaats, string adres, string postcode)
-        {
-            foreach (Bioscoop b in bioscopen)
-            {
-                if (bioscoopnaam == b.Bioscoopnaam)
-                {
-                    return false;
-                }
-            }
-            bioscopen.Add(new Bioscoop(bioscoopnaam, plaats, adres, postcode));
-            return true;
-        }
-
-        //Deze methode vraagt het hoogste id op van een achteur
-        public int VraagHoogsteActeurIDOp()
-        {
-            int hoogsteID = 0;
-
-            try
-            {
-                conn.Open();
-                string query = "SELECT * FROM ACTEUR WHERE ID = (SELECT MAX(ID) FROM ACTEUR)";
-                command = new OracleCommand(query, conn);
-                OracleDataReader datareader = command.ExecuteReader();
-                while (datareader.Read())
-                {
-                    hoogsteID = Convert.ToInt32(datareader["ID"]);
-                }
-                return hoogsteID;
-            }
-            catch (Exception)
-            {
-                return -1;
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
-
-        //Deze methode voegt een acteur toe
-        public bool VoegActeurToe(int id, string voornaam, string achternaam, string geboortedatum)
-        {
-            try
-            {
-                conn.Open();
-                string query = "INSERT INTO ACTEUR(ID, Voornaam, Achternaam, Geboortedatum) VALUES(" + id + ", '" + voornaam + "', '" + achternaam + "', '" + geboortedatum + "')";
-                command = new OracleCommand(query, conn);
-                command.ExecuteNonQuery();
-                return true;
-            }
-            catch (Exception)
-            {
-
-            }
-            finally
-            {
-                conn.Close();
-
-            }
-            return false;
         }
 
         //Deze methode haalt alle acteurs op en geeft ze terug als een lijst
@@ -285,6 +254,38 @@ namespace ASPathe_Applicatie
                     films.Add(f);
                 }
                 return films;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        //Deze methode haalt alle personen op uit de database
+        public List<Persoon> HaalAllePersonenOp()
+        {
+            List<Persoon> tempPersonen = new List<Persoon>();
+
+            try
+            {
+                conn.Open();
+                string query = "SELECT * FROM PERSOON";
+                command = new OracleCommand(query, conn);
+                OracleDataReader datareader = command.ExecuteReader();
+                while (datareader.Read())
+                {
+                    string voornaam = Convert.ToString(datareader["voornaam"]);
+                    string achternaam = Convert.ToString(datareader["achternaam"]);
+                    string gebruikersnaam = Convert.ToString(datareader["voornaam"]); //De voornaam en achternaam gebruik ik als
+                    string wachtwoord = Convert.ToString(datareader["achternaam"]); //als gebruikersnaam en wachtwoord voor het gemak
+                    string email = Convert.ToString(datareader["mailadres"]);
+                    tempPersonen.Add(new Persoon(voornaam, achternaam, gebruikersnaam, wachtwoord, email));
+                }
+                return tempPersonen;
             }
             catch (Exception)
             {
