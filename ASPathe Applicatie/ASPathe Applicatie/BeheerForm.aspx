@@ -35,12 +35,12 @@
         <asp:TextBox ID="tbOndertiteling" runat="server"></asp:TextBox>
         <br />
         <br />
-        <asp:Button ID="btnMaakFilmAan" runat="server" Text="Maak Aan" />
+        <asp:Button ID="btnMaakFilmAan" runat="server" Text="Maak Aan" OnClick="btnMaakFilmAan_Click" />
 &nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnPasFilmAan" runat="server" Text="Pas Aan" />
         <br />
         <br />
-        <asp:ListBox ID="lbFilms" runat="server" Height="100px" Width="300px"></asp:ListBox>
+        <asp:ListBox ID="lbFilms" runat="server" Height="100px" Width="400px"></asp:ListBox>
         <br />
         <br />
         <br />
@@ -66,7 +66,7 @@
         <asp:Button ID="btnPasActeurAan" runat="server" Text="Pas Aan" />
         <br />
         <br />
-        <asp:ListBox ID="lbActeurs" runat="server" Height="100px" Width="300px"></asp:ListBox>
+        <asp:ListBox ID="lbActeurs" runat="server" Height="100px" Width="285px"></asp:ListBox>
         <br />
         <br />
         <br />
@@ -94,7 +94,7 @@
         <asp:Button ID="btnPasBioscoopAan" runat="server" Text="Pas Aan" />
         <br />
         <br />
-        <asp:ListBox ID="lbBioscopen" runat="server" Height="100px" Width="300px"></asp:ListBox>
+        <asp:ListBox ID="lbBioscopen" runat="server" Height="100px" Width="400px"></asp:ListBox>
     
     </div>
     </form>

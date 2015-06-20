@@ -38,21 +38,21 @@ namespace ASPathe_Applicatie
             foreach (Bioscoop b in databasekoppeling.HaalBioscopenOp())
             {
                 ddlBioscopen.Items.Add(b.Bioscoopnaam);
-                lbBioscopen.Items.Add(b.Bioscoopnaam + "- " + b.Plaats + "- " + b.Adres + "- " + b.Postcode);
+                lbBioscopen.Items.Add(b.Bioscoopnaam + " - " + b.Plaats + " - " + b.Adres + " - " + b.Postcode);
             }
             ddlActeurs.Items.Clear();
             lbActeurs.Items.Clear();
             foreach (Acteur a in databasekoppeling.HaalActeursOp())
             {
                 ddlActeurs.Items.Add(a.Voornaam + " " + a.Achternaam);
-                lbActeurs.Items.Add(a.Voornaam + " " + a.Achternaam + "- " + a.Geboortedatum);
+                lbActeurs.Items.Add(a.Voornaam + " " + a.Achternaam + " - " + a.Geboortedatum);
             }
             ddlFilms.Items.Clear();
             lbFilms.Items.Clear();
             foreach (Film f in databasekoppeling.HaalFilmsOp())
             {
                 ddlFilms.Items.Add(f.Titel);
-                lbFilms.Items.Add(f.Titel + "- " + f.Regisseur + "- " + f.Genre + "- " + f.Tijdsduur + "- " + f.Ondertiteling);
+                lbFilms.Items.Add(f.Titel + " - " + f.Regisseur + " - " + f.Genre + " - " + f.Tijdsduur + " - " + f.Ondertiteling);
             }
         }
 
@@ -64,6 +64,7 @@ namespace ASPathe_Applicatie
             string postcode = tbPostcode.Text;
             databasekoppeling.VoegBioscoopToe(bioscoopnaam, plaats, adres, postcode);
             RefreshAlles();
+            GeefMessage("Bioscoop aangemaakt");
         }
 
         protected void btnMaakActeurAan_Click(object sender, EventArgs e)
@@ -92,6 +93,11 @@ namespace ASPathe_Applicatie
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
             tbGeboortedatum.Text = Convert.ToString(Calendar1.SelectedDate.ToShortDateString());
+        }
+
+        protected void btnMaakFilmAan_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
