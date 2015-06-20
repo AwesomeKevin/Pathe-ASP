@@ -101,7 +101,7 @@ namespace ASPathe_Applicatie
             try
             {
                 conn.Open();
-                string query = "INSERT INTO FILM(ID, Titel, Genre, Tijdsduur, Regisseur, Taalversie, Ondertiteling, Leeftijd, Trailer, Poster, Foto) VALUES(" + id + ", '" + titel + "', '" + genre + "', " + tijdsduur + ", '" + regisseur + "', '" + taalversie + "', " + leeftijd + ", '" + ondertiteling + "', '', '', '')";
+                string query = "INSERT INTO FILM(ID, Titel, Genre, Tijdsduur, Regisseur, Taalversie, Ondertiteling, Leeftijd, Trailer, Poster, Foto) VALUES(" + id + ", '" + titel + "', '" + genre + "', " + tijdsduur + ", '" + regisseur + "', '" + taalversie + "', '" + ondertiteling + "', '" + leeftijd + "', '', '', '')";
                 command = new OracleCommand(query, conn);
                 command.ExecuteNonQuery();
                 return true;
