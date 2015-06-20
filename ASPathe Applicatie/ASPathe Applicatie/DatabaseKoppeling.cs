@@ -10,8 +10,9 @@ namespace ASPathe_Applicatie
     public class DatabaseKoppeling
     {
         //Fields
-        private List<Bioscoop> bioscopen;
-        private List<Acteur> acteurs;
+        private List<Bioscoop> bioscopen = new List<Bioscoop>();
+        private List<Acteur> acteurs = new List<Acteur>();
+        private List<Film> films = new List<Film>();
         private List<Persoon> personen = new List<Persoon>();
         private Persoon nuIngelogdePersoon = null;
         private OracleConnection conn;
@@ -29,7 +30,6 @@ namespace ASPathe_Applicatie
         //Constructor
         public DatabaseKoppeling()
         {
-            bioscopen = new List<Bioscoop>();
             conn = new OracleConnection();
             command = conn.CreateCommand();
             conn.ConnectionString = "User Id="+user+";Password="+pw+";Data Source="+"//localhost:1521/xe"+";";
@@ -162,6 +162,10 @@ namespace ASPathe_Applicatie
                 }
                 return bioscopen;
             }
+            catch (Exception)
+            {
+                return null;
+            }
             finally
             {
                 conn.Close();
@@ -215,13 +219,8 @@ namespace ASPathe_Applicatie
             try
             {
                 conn.Open();
-                string query = "INSERT INTO ACTEUR(ID, Voornaam, Achternaam, Geboortedatum)" +
-                    "VALUES (:ID, :Voornaam, :Achternaam :Geboortedatum)";
+                string query = "INSERT INTO ACTEUR(ID, Voornaam, Achternaam, Geboortedatum) VALUES(" + id + ", '" + voornaam + "', '" + achternaam + "', '" + geboortedatum + "')";
                 command = new OracleCommand(query, conn);
-                command.Parameters.Add("ID", id);
-                command.Parameters.Add("Voornaam", voornaam);
-                command.Parameters.Add("Achternaam", achternaam);
-                command.Parameters.Add("Geboortedatum", geboortedatum);
                 command.ExecuteNonQuery();
                 return true;
             }
@@ -243,7 +242,7 @@ namespace ASPathe_Applicatie
             try
             {
                 conn.Open();
-                string query = "SELECT * FROM ACTEUR";
+                string query = "SELECT Voornaam, Achternaam, Geboortedatum FROM ACTEUR";
                 command = new OracleCommand(query, conn);
                 OracleDataReader dataReader = command.ExecuteReader();
                 while (dataReader.Read())
@@ -255,6 +254,41 @@ namespace ASPathe_Applicatie
                     acteurs.Add(a);
                 }
                 return acteurs;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        //Deze methode haalt alle films op en geeft ze terug in een lijst
+        public List<Film> HaalFilmsOp()
+        {
+            try
+            {
+                conn.Open();
+                string query = "SELECT Titel, Genre, Tijdsduur, Regisseur, Ondertiteling FROM FILM";
+                command = new OracleCommand(query, conn);
+                OracleDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    string titel = Convert.ToString(dataReader["Titel"]);
+                    string genre = Convert.ToString(dataReader["Genre"]);
+                    int tijdsduur = Convert.ToInt32(dataReader["Tijdsduur"]);
+                    string regisseur = Convert.ToString(dataReader["Regisseur"]);
+                    string ondertiteling = Convert.ToString(dataReader["Ondertiteling"]);
+                    Film f = new Film (titel, genre, tijdsduur, regisseur, ondertiteling);
+                    films.Add(f);
+                }
+                return films;
+            }
+            catch (Exception)
+            {
+                return null;
             }
             finally
             {

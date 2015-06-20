@@ -10,7 +10,7 @@ namespace ASPathe_Applicatie
     {
         private string titel;
         private string genre;
-        private string tijdsduur;
+        private int tijdsduur;
         private string regisseur;
         private string ondertiteling;
 
@@ -26,7 +26,7 @@ namespace ASPathe_Applicatie
             set { genre = value; }
         }
 
-        public string Tijdsduur
+        public int Tijdsduur
         {
             get { return tijdsduur; }
             set { tijdsduur = value; }
@@ -44,7 +44,7 @@ namespace ASPathe_Applicatie
             set { ondertiteling = value; }
         }
 
-        public Film(string titel, string genre, string tijdsduur, string regisseur, string ondertiteling)
+        public Film(string titel, string genre, int tijdsduur, string regisseur, string ondertiteling)
         {
             this.titel = titel;
             this.genre = genre;
