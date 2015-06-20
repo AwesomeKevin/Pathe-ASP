@@ -58,9 +58,10 @@
         <br />
         <asp:Label ID="lblGeboortedatum" runat="server" Text="Geboortedatum: "></asp:Label>
         <asp:TextBox ID="tbGeboortedatum" runat="server"></asp:TextBox>
+        <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
         <br />
         <br />
-        <asp:Button ID="btnMaakActeurAan" runat="server" Text="Maak Aan" />
+        <asp:Button ID="btnMaakActeurAan" runat="server" Text="Maak Aan" OnClick="btnMaakActeurAan_Click" />
 &nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnPasActeurAan" runat="server" Text="Pas Aan" />
         <br />

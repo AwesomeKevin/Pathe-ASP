@@ -10,7 +10,7 @@ namespace ASPathe_Applicatie
     {
         private string voornaam;
         private string achternaam;
-        private DateTime geboortedatum;
+        private string geboortedatum;
 
         public string Voornaam
         {
@@ -24,13 +24,13 @@ namespace ASPathe_Applicatie
             set { achternaam = value; }
         }
 
-        public DateTime Geboortedatum
+        public string Geboortedatum
         {
             get { return geboortedatum; }
             set { geboortedatum = value; }
         }
 
-        public Acteur(string voornaam, string achternaam, DateTime geboortedatum)
+        public Acteur(string voornaam, string achternaam, string geboortedatum)
         {
             this.voornaam = voornaam;
             this.achternaam = achternaam;

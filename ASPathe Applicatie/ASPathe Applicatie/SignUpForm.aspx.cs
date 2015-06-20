@@ -9,7 +9,7 @@ namespace ASPathe_Applicatie
 {
     public partial class SignUpForm : System.Web.UI.Page
     {
-        private DatabaseKoppeling database;
+        private static DatabaseKoppeling database;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -38,39 +38,49 @@ namespace ASPathe_Applicatie
 
         protected void btnSignUp_Click(object sender, EventArgs e)
         {
-            if (tbID.Text != "")
+            if (tbVoornaam.Text != "")
             {
-                if (Convert.ToInt32(tbID.Text) > Convert.ToInt32(database.VraagHoogsteIDOp()))
+                if (tbAchternaam.Text != "")
                 {
-                    if (tbVoornaam.Text != "")
+                    if (tbGeboortedatum.Text != "")
                     {
-                        if (tbAchternaam.Text != "")
+                        if (tbGebruikersnaam.Text != "")
                         {
-                            if (tbGeboortedatum.Text != "")
+                            if (tbWachtwoord.Text != "")
                             {
-                                if (tbGebruikersnaam.Text != "")
+                                if (tbEmail.Text != "")
                                 {
-                                    if (tbWachtwoord.Text != "")
+                                    int id = database.VraagHoogsteIDOp() + 1;
+                                    string voornaam = tbVoornaam.Text;
+                                    string tussenvoegsel = null;
+                                    if (tbTussenvoegsel.Text == "")
                                     {
-                                        if (tbEmail.Text != "")
-                                        {
-
-                                        }
-                                        GeefMessage("Voer een email in");
+                                        tussenvoegsel = null;
                                     }
-                                    GeefMessage("Voer een wachtwoord in");
+                                    tussenvoegsel = tbTussenvoegsel.Text;
+                                    string achternaam = tbAchternaam.Text;
+                                    string geboortedatum = tbGeboortedatum.Text;
+                                    string wachtwoord = tbWachtwoord.Text;
+                                    string email = tbEmail.Text;
+                                    database.MaakNieuwePersoon(id, voornaam, tussenvoegsel, achternaam, geboortedatum, wachtwoord, email);
+                                    GeefMessage("Nieuwe persoon aangemaakt");
                                 }
-                                GeefMessage("Voer een gebruikersnaam in");
+                                GeefMessage("Voer een email in");
                             }
-                            GeefMessage("Voer een geboortedatum in");
+                            GeefMessage("Voer een wachtwoord in");
                         }
-                        GeefMessage("Voer een achternaam in");
+                        GeefMessage("Voer een gebruikersnaam in");
                     }
-                    GeefMessage("Voer een Voornaam in");
+                    GeefMessage("Voer een geboortedatum in");
                 }
-                GeefMessage("Dit ID bestaat al");
+                GeefMessage("Voer een achternaam in");
             }
-            GeefMessage("Voer een ID in");
+            GeefMessage("Voer een Voornaam in");
+        }
+
+        protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+        {
+            tbGeboortedatum.Text = Convert.ToString(Calendar1.SelectedDate.ToShortDateString());
         }
     }
 }

@@ -13,9 +13,6 @@
         <asp:Label ID="lblSignUp" runat="server" Text="Sign Up"></asp:Label>
         <br />
         <br />
-        <asp:Label ID="lblID" runat="server" Text="ID: "></asp:Label>
-        <asp:TextBox ID="tbID" runat="server"></asp:TextBox>
-        <br />
         <asp:Label ID="lblVoornaam" runat="server" Text="Voornaam: "></asp:Label>
         <asp:TextBox ID="tbVoornaam" runat="server"></asp:TextBox>
         <br />
@@ -27,7 +24,7 @@
         <br />
         <asp:Label ID="lblGeboortedatum" runat="server" Text="Geboortedatum: "></asp:Label>
         <asp:TextBox ID="tbGeboortedatum" runat="server"></asp:TextBox>
-        <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+        <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
         <br />
         <asp:Label ID="lblGebruikersnaam" runat="server" Text="Gebruikersnaam: "></asp:Label>
         <asp:TextBox ID="tbGebruikersnaam" runat="server"></asp:TextBox>
