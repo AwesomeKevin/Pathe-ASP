@@ -152,5 +152,27 @@ namespace ASPathe_Applicatie
             }
             GeefMessage("Voer titel in");
         }
+
+        protected void btnPasFilmAan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnPasActeurAan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnPasBioscoopAan_Click(object sender, EventArgs e)
+        {
+            string geselecteerdeBioscoop = Convert.ToString(ddlBioscopen.SelectedItem);
+            string bioscoopnaam = tbBioscoopnaam.Text;
+            string plaats = tbPlaats.Text;
+            string adres = tbAdres.Text;
+            string postcode = tbPostcode.Text;
+            databasekoppeling.WijzigBioscoop(geselecteerdeBioscoop, bioscoopnaam, plaats, adres, postcode);
+            RefreshAlles();
+            GeefMessage("Bioscoop gewijzigd");
+        }
     }
 }

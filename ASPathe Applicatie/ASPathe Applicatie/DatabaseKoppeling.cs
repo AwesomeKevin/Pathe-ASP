@@ -344,5 +344,46 @@ namespace ASPathe_Applicatie
                 conn.Close();
             }
         }
+
+        public bool WijzigBioscoop(string geselecteerdeBioscoop, string bioscoopnaam, string plaats, string adres, string postcode)
+        {
+            bool gewijzigd = false;
+            try
+            {
+                if (bioscoopnaam != "")
+                {
+                    conn.Open();
+                    string query = "UPDATE BIOSCOOP SET Bioscoopnaam = '" + bioscoopnaam + "' WHERE Bioscoopnaam = '" + geselecteerdeBioscoop + "'";
+                    command = new OracleCommand(query, conn);
+                    command.ExecuteNonQuery();
+                }
+
+                if (plaats != "")
+                {
+                    conn.Open();
+                    string query = "UPDATE BIOSCOOP SET Plaats = '" + plaats + "' WHERE Bioscoopnaam = '" + geselecteerdeBioscoop + "'";
+                    command = new OracleCommand(query, conn);
+                    command.ExecuteNonQuery();
+                }
+
+                if (adres != "")
+                {
+                    conn.Open();
+                    string query = "UPDATE BIOSCOOP SET Adres = '" + adres + "' WHERE Bioscoopnaam = '" + geselecteerdeBioscoop + "";
+                    command = new OracleCommand(query, conn);
+                    command.ExecuteNonQuery();
+                }
+                gewijzigd = true;
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return gewijzigd;
+        }
     }
 }
