@@ -34,13 +34,16 @@
         <asp:Label ID="lblOndertiteling" runat="server" Text="Ondertiteling: "></asp:Label>
         <asp:TextBox ID="tbOndertiteling" runat="server"></asp:TextBox>
         <br />
+        <asp:Label ID="lblLeeftijd" runat="server" Text="Leeftijd: "></asp:Label>
+        <asp:TextBox ID="tbLeeftijd" runat="server"></asp:TextBox>
+        <br />
         <br />
         <asp:Button ID="btnMaakFilmAan" runat="server" Text="Maak Aan" OnClick="btnMaakFilmAan_Click" />
 &nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnPasFilmAan" runat="server" Text="Pas Aan" />
         <br />
         <br />
-        <asp:ListBox ID="lbFilms" runat="server" Height="100px" Width="400px"></asp:ListBox>
+        <asp:ListBox ID="lbFilms" runat="server" Height="100px" Width="450px"></asp:ListBox>
         <br />
         <br />
         <br />
@@ -94,7 +97,7 @@
         <asp:Button ID="btnPasBioscoopAan" runat="server" Text="Pas Aan" />
         <br />
         <br />
-        <asp:ListBox ID="lbBioscopen" runat="server" Height="100px" Width="400px"></asp:ListBox>
+        <asp:ListBox ID="lbBioscopen" runat="server" Height="100px" Width="430px"></asp:ListBox>
     
     </div>
     </form>

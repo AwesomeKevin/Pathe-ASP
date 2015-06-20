@@ -96,6 +96,28 @@ namespace ASPathe_Applicatie
             return false;
         }
 
+        public bool VoegFilmToe(int id, string titel, string genre, int tijdsduur, string regisseur, string taalversie, string ondertiteling, int leeftijd)
+        {
+            try
+            {
+                conn.Open();
+                string query = "INSERT INTO FILM(ID, Titel, Genre, Tijdsduur, Regisseur, Taalversie, Ondertiteling, Leeftijd, Trailer, Poster, Foto) VALUES(" + id + ", '" + titel + "', '" + genre + "', " + tijdsduur + ", '" + regisseur + "', '" + taalversie + "', " + leeftijd + ", '" + ondertiteling + "', '', '', '')";
+                command = new OracleCommand(query, conn);
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+
+            }
+            return false;
+        }
+
         //Deze methode maakt een nieuwe persoon aan. (werkt alleen niet)
         public bool VoegPersoonToe(int id, string voornaam, string tussenvoegsel, string achternaam, string geboortedatum, string wachtwoord, string email)
         {
@@ -129,6 +151,32 @@ namespace ASPathe_Applicatie
             {
                 conn.Open();
                 string query = "SELECT * FROM ACTEUR WHERE ID = (SELECT MAX(ID) FROM ACTEUR)";
+                command = new OracleCommand(query, conn);
+                OracleDataReader datareader = command.ExecuteReader();
+                while (datareader.Read())
+                {
+                    hoogsteID = Convert.ToInt32(datareader["ID"]);
+                }
+                return hoogsteID;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public int VraagHoogsteFilmIDOp()
+        {
+            int hoogsteID = 0;
+
+            try
+            {
+                conn.Open();
+                string query = "SELECT * FROM FILM WHERE ID = (SELECT MAX(ID) FROM FILM)";
                 command = new OracleCommand(query, conn);
                 OracleDataReader datareader = command.ExecuteReader();
                 while (datareader.Read())

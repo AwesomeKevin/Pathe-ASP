@@ -10,10 +10,9 @@ namespace ASPathe_Applicatie
     public partial class BeheerForm : System.Web.UI.Page
     {
         DatabaseKoppeling databasekoppeling = new DatabaseKoppeling();
-        List<Bioscoop> bioscopen;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            bioscopen = new List<Bioscoop>();
             RefreshAlles();
         }
 
@@ -58,13 +57,29 @@ namespace ASPathe_Applicatie
 
         public void btnMaakBioscoopAan_Click(object sender, EventArgs e)
         {
-            string bioscoopnaam = tbBioscoopnaam.Text;
-            string plaats = tbPlaats.Text;
-            string adres = tbAdres.Text;
-            string postcode = tbPostcode.Text;
-            databasekoppeling.VoegBioscoopToe(bioscoopnaam, plaats, adres, postcode);
-            RefreshAlles();
-            GeefMessage("Bioscoop aangemaakt");
+            if (tbBioscoopnaam.Text != "")
+            {
+                if (tbPlaats.Text != "")
+                {
+                    if (tbAdres.Text != "")
+                    {
+                        if (tbPostcode.Text != "")
+                        {
+                            string bioscoopnaam = tbBioscoopnaam.Text;
+                            string plaats = tbPlaats.Text;
+                            string adres = tbAdres.Text;
+                            string postcode = tbPostcode.Text;
+                            databasekoppeling.VoegBioscoopToe(bioscoopnaam, plaats, adres, postcode);
+                            RefreshAlles();
+                            GeefMessage("Bioscoop aangemaakt");
+                        }
+                        GeefMessage("Voer postcode in");
+                    }
+                    GeefMessage("Voer adres in");
+                }
+                GeefMessage("Voer plaats in");
+            }
+            GeefMessage("Voer bioscoopnaam in");
         }
 
         protected void btnMaakActeurAan_Click(object sender, EventArgs e)
@@ -81,7 +96,7 @@ namespace ASPathe_Applicatie
                         string geboortedatum = tbGeboortedatum.Text;
                         databasekoppeling.VoegActeurToe(id, voornaam, achternaam, geboortedatum);
                         RefreshAlles();
-                        GeefMessage("Achteur aangemaakt");
+                        GeefMessage("Acteur aangemaakt");
                     }
                     GeefMessage("Voer een geboortedatum in");
                 }
@@ -97,7 +112,45 @@ namespace ASPathe_Applicatie
 
         protected void btnMaakFilmAan_Click(object sender, EventArgs e)
         {
-
+            if (tbTitel.Text != "")
+            {
+                if (tbGenre.Text != "")
+                {
+                    if (tbTijdsduur.Text != "")
+                    {
+                        if (tbRegisseur.Text != "")
+                        {
+                            if (tbTaalversie.Text != "")
+                            {
+                                if (tbOndertiteling.Text != "")
+                                {
+                                    if (tbLeeftijd.Text != "")
+                                    {
+                                        int id = databasekoppeling.VraagHoogsteFilmIDOp() + 1;
+                                        string titel = tbTitel.Text;
+                                        string genre = tbGenre.Text;
+                                        int tijdsduur = Convert.ToInt32(tbTijdsduur.Text);
+                                        string regisseur = tbRegisseur.Text;
+                                        string taalversie = tbTaalversie.Text;
+                                        string ondertiteling = tbOndertiteling.Text;
+                                        int leeftijd = Convert.ToInt32(tbLeeftijd.Text);
+                                        databasekoppeling.VoegFilmToe(id, titel, genre, tijdsduur, regisseur, taalversie, ondertiteling, leeftijd);
+                                        RefreshAlles();
+                                        GeefMessage("Film aangemaakt");
+                                    }
+                                    GeefMessage("Voer een minimale leeftijd in");
+                                }
+                                GeefMessage("Voer ondertiteling in");
+                            }
+                            GeefMessage("Voer taalversie in");
+                        }
+                        GeefMessage("Voer regisseur in");
+                    }
+                    GeefMessage("Voer tijdsduur in");
+                }
+                GeefMessage("Voer gnere in");
+            }
+            GeefMessage("Voer titel in");
         }
     }
 }
