@@ -118,15 +118,25 @@ namespace ASPathe_Applicatie
             return false;
         }
 
-        //Deze methode maakt een nieuwe persoon aan. (werkt alleen niet)
-        public bool VoegPersoonToe(int id, string voornaam, string tussenvoegsel, string achternaam, string geboortedatum, string wachtwoord, string email)
+        //Deze methode voegt een nieuwe persoon toe
+        public bool VoegPersoonToe(int id, string voornaam, string tussenvoegsel, string achternaam, string geboortedatum, string geslacht, string wachtwoord, string email)
         {
             try
             {
-                conn.Open();
-                string query = "INSERT INTO PERSOON(ID, Voornaam, Tussenvoegsel, Achternaam, Geboortedatum, Geslacht, Mailadres, Wachtwoord, WilWekelijkseNiewsbrief, Foto) VALUES(" + id + ", '" + voornaam + "', '" + tussenvoegsel + "', '" + achternaam + "', '" + geboortedatum + "', 'man', '" + email + "', '" + wachtwoord + "', 'nee', '')";
-                command = new OracleCommand(query, conn);
-                command.ExecuteNonQuery();
+                if (tussenvoegsel != "")
+                {
+                    conn.Open();
+                    string query = "INSERT INTO PERSOON(ID, Voornaam, Tussenvoegsel, Achternaam, Geboortedatum, Geslacht, Mailadres, Wachtwoord, WilWekelijkseNiewsbrief, Foto) VALUES(" + id + ", '" + voornaam + "', '" + tussenvoegsel + "', '" + achternaam + "', '" + geboortedatum + "', '" + geslacht + "', '" + email + "', '" + wachtwoord + "', 'nee', '')";
+                    command = new OracleCommand(query, conn);
+                    command.ExecuteNonQuery();
+                }
+                else
+                {
+                    conn.Open();
+                    string query = "INSERT INTO PERSOON(ID, Voornaam, Tussenvoegsel, Achternaam, Geboortedatum, Geslacht, Mailadres, Wachtwoord, WilWekelijkseNiewsbrief, Foto) VALUES(" + id + ", '" + voornaam + "', '', '" + achternaam + "', '" + geboortedatum + "', '" + geslacht + "', '" + email + "', '" + wachtwoord + "', 'nee', '')";
+                    command = new OracleCommand(query, conn);
+                    command.ExecuteNonQuery();
+                }
                 return true;
             }
             catch (Exception)
@@ -136,7 +146,6 @@ namespace ASPathe_Applicatie
             finally
             {
                 conn.Close();
-
             }
             return false;
         }
@@ -253,7 +262,7 @@ namespace ASPathe_Applicatie
             }
         }
 
-        //Deze methode haalt alle acteurs op en geeft ze terug als een lijst
+        //Deze methode haalt alle acteurs op en geeft ze terug in een lijst
         public List<Acteur> HaalActeursOp()
         {
             try
@@ -313,7 +322,7 @@ namespace ASPathe_Applicatie
             }
         }
 
-        //Deze methode haalt alle personen op uit de database
+        //Deze methode haalt alle personen op uit de database en geeft ze terug in een lijst
         public List<Persoon> HaalAllePersonenOp()
         {
             List<Persoon> tempPersonen = new List<Persoon>();
@@ -345,6 +354,8 @@ namespace ASPathe_Applicatie
             }
         }
 
+        //Hieronder staan de Wijzig methodes
+        //Deze methode wijzigd van een bioscoop hetgene wat in de desbetreffende textbox staat
         public bool WijzigBioscoop(string geselecteerdeBioscoop, string bioscoopnaam, string plaats, string adres, string postcode)
         {
             bool gewijzigd = false;
@@ -394,6 +405,7 @@ namespace ASPathe_Applicatie
             return gewijzigd;
         }
 
+        //Deze methode wijzigd van een acteur hetgene wat in de desbetreffende textbox staat
         public bool WijzigActeur(string geselecteerdeActeur, string voornaam, string achternaam, string geboortedatum)
         {
             bool gewijzigd = false;
@@ -435,6 +447,7 @@ namespace ASPathe_Applicatie
             return gewijzigd;
         }
 
+        //Deze methode wijzigd van een film hetgene wat in de desbetreffende textbox staat
         public bool WijzigFilm(string geselecteerdeFilm, string titel, string genre, string tijdsduur, string regisseur, string taalversie, string ondertiteling, string leeftijd)
         {
             bool gewijzigd = false;

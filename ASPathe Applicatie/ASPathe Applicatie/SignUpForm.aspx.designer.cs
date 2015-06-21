@@ -112,22 +112,22 @@ namespace ASPathe_Applicatie {
         protected global::System.Web.UI.WebControls.Calendar Calendar1;
         
         /// <summary>
-        /// lblGebruikersnaam control.
+        /// lblGeslacht control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblGebruikersnaam;
+        protected global::System.Web.UI.WebControls.Label lblGeslacht;
         
         /// <summary>
-        /// tbGebruikersnaam control.
+        /// tbGeslacht control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbGebruikersnaam;
+        protected global::System.Web.UI.WebControls.TextBox tbGeslacht;
         
         /// <summary>
         /// lblWachtwoord control.

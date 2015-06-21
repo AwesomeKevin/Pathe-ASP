@@ -44,7 +44,7 @@ namespace ASPathe_Applicatie
                 {
                     if (tbGeboortedatum.Text != "")
                     {
-                        if (tbGebruikersnaam.Text != "")
+                        if (tbGeslacht.Text != "")
                         {
                             if (tbWachtwoord.Text != "")
                             {
@@ -52,24 +52,30 @@ namespace ASPathe_Applicatie
                                 {
                                     int id = database.VraagHoogstePersoonIDOp() + 1;
                                     string voornaam = tbVoornaam.Text;
-                                    string tussenvoegsel = null;
-                                    if (tbTussenvoegsel.Text == "")
-                                    {
-                                        tussenvoegsel = null;
-                                    }
-                                    tussenvoegsel = tbTussenvoegsel.Text;
+                                    string tussenvoegsel = tbTussenvoegsel.Text;
                                     string achternaam = tbAchternaam.Text;
                                     string geboortedatum = tbGeboortedatum.Text;
+                                    string geslacht = tbGeslacht.Text;
                                     string wachtwoord = tbWachtwoord.Text;
                                     string email = tbEmail.Text;
-                                    database.VoegPersoonToe(id, voornaam, tussenvoegsel, achternaam, geboortedatum, wachtwoord, email);
-                                    GeefMessage("Nieuwe persoon aangemaakt");
+                                    if (database.VoegPersoonToe(id, voornaam, tussenvoegsel, achternaam, geboortedatum, geslacht, wachtwoord, email))
+                                    {
+                                        GeefMessage("Nieuwe persoon aangemaakt");
+                                        tbVoornaam.Text = "";
+                                        tbTussenvoegsel.Text = "";
+                                        tbAchternaam.Text = "";
+                                        tbGeboortedatum.Text = "";
+                                        tbGeslacht.Text = "";
+                                        tbWachtwoord.Text = "";
+                                        tbEmail.Text = "";
+                                    }
+                                    GeefMessage("Nieuwe persoon aanmaken mislukt");
                                 }
                                 GeefMessage("Voer een email in");
                             }
                             GeefMessage("Voer een wachtwoord in");
                         }
-                        GeefMessage("Voer een gebruikersnaam in");
+                        GeefMessage("Voer een geslacht in");
                     }
                     GeefMessage("Voer een geboortedatum in");
                 }

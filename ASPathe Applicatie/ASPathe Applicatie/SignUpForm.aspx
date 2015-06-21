@@ -26,8 +26,8 @@
         <asp:TextBox ID="tbGeboortedatum" runat="server"></asp:TextBox>
         <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
         <br />
-        <asp:Label ID="lblGebruikersnaam" runat="server" Text="Gebruikersnaam: "></asp:Label>
-        <asp:TextBox ID="tbGebruikersnaam" runat="server"></asp:TextBox>
+        <asp:Label ID="lblGeslacht" runat="server" Text="Geslacht: "></asp:Label>
+        <asp:TextBox ID="tbGeslacht" runat="server"></asp:TextBox>
         <br />
         <asp:Label ID="lblWachtwoord" runat="server" Text="Wachtwoord: "></asp:Label>
         <asp:TextBox ID="tbWachtwoord" runat="server"></asp:TextBox>
