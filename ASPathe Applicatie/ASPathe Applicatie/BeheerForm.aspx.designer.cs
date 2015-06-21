@@ -184,6 +184,15 @@ namespace ASPathe_Applicatie {
         protected global::System.Web.UI.WebControls.Button btnPasFilmAan;
         
         /// <summary>
+        /// btnVerwijderFilm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVerwijderFilm;
+        
+        /// <summary>
         /// lbFilms control.
         /// </summary>
         /// <remarks>
@@ -290,6 +299,15 @@ namespace ASPathe_Applicatie {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnPasActeurAan;
+        
+        /// <summary>
+        /// btnVerwijderActeur control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVerwijderActeur;
         
         /// <summary>
         /// lbActeurs control.
@@ -407,6 +425,15 @@ namespace ASPathe_Applicatie {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnPasBioscoopAan;
+        
+        /// <summary>
+        /// btnVerwijderBioscoop control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVerwijderBioscoop;
         
         /// <summary>
         /// lbBioscopen control.

@@ -41,6 +41,8 @@
         <asp:Button ID="btnMaakFilmAan" runat="server" Text="Maak Aan" OnClick="btnMaakFilmAan_Click" />
 &nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnPasFilmAan" runat="server" Text="Pas Aan" OnClick="btnPasFilmAan_Click" />
+        &nbsp;&nbsp;&nbsp;
+        <asp:Button ID="btnVerwijderFilm" runat="server" OnClick="btnVerwijderFilm_Click" Text="Verwijder" />
         <br />
         <br />
         <asp:ListBox ID="lbFilms" runat="server" Height="100px" Width="450px"></asp:ListBox>
@@ -67,6 +69,8 @@
         <asp:Button ID="btnMaakActeurAan" runat="server" Text="Maak Aan" OnClick="btnMaakActeurAan_Click" />
 &nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnPasActeurAan" runat="server" Text="Pas Aan" OnClick="btnPasActeurAan_Click" />
+        &nbsp;&nbsp;&nbsp;
+        <asp:Button ID="btnVerwijderActeur" runat="server" OnClick="btnVerwijderActeur_Click" Text="Verwijder" />
         <br />
         <br />
         <asp:ListBox ID="lbActeurs" runat="server" Height="100px" Width="285px"></asp:ListBox>
@@ -95,6 +99,8 @@
         <asp:Button ID="btnMaakBioscoopAan" runat="server" Text="Maak Aan" OnClick="btnMaakBioscoopAan_Click" />
 &nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnPasBioscoopAan" runat="server" Text="Pas Aan" OnClick="btnPasBioscoopAan_Click" />
+        &nbsp;&nbsp;&nbsp;
+        <asp:Button ID="btnVerwijderBioscoop" runat="server" OnClick="btnVerwijderBioscoop_Click" Text="Verwijder" />
         <br />
         <br />
         <asp:ListBox ID="lbBioscopen" runat="server" Height="100px" Width="430px"></asp:ListBox>

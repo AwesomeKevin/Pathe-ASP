@@ -373,6 +373,14 @@ namespace ASPathe_Applicatie
                     command = new OracleCommand(query, conn);
                     command.ExecuteNonQuery();
                 }
+
+                if (postcode != "")
+                {
+                    conn.Open();
+                    string query = "UPDATE BIOSCOOP SET Postcode = '" + postcode + "' WHERE Bioscoopnaam = '" + geselecteerdeBioscoop + "";
+                    command = new OracleCommand(query, conn);
+                    command.ExecuteNonQuery();
+                }
                 gewijzigd = true;
             }
             catch (Exception)
@@ -384,6 +392,192 @@ namespace ASPathe_Applicatie
                 conn.Close();
             }
             return gewijzigd;
+        }
+
+        public bool WijzigActeur(string geselecteerdeActeur, string voornaam, string achternaam, string geboortedatum)
+        {
+            bool gewijzigd = false;
+            try
+            {
+                if (voornaam != "")
+                {
+                    conn.Open();
+                    string query = "UPDATE ACTEUR SET Voornaam = '" + voornaam + "' WHERE Voornaam = '" + geselecteerdeActeur + "'";
+                    command = new OracleCommand(query, conn);
+                    command.ExecuteNonQuery();
+                }
+
+                if (achternaam != "")
+                {
+                    conn.Open();
+                    string query = "UPDATE ACTEUR SET Achternaam = '" + achternaam + "' WHERE Voornaam = '" + geselecteerdeActeur + "'";
+                    command = new OracleCommand(query, conn);
+                    command.ExecuteNonQuery();
+                }
+
+                if (geboortedatum != "")
+                {
+                    conn.Open();
+                    string query = "UPDATE ACTEUR SET Geboortedatum = '" + geboortedatum + "' WHERE Voornaam = '" + geselecteerdeActeur + "'";
+                    command = new OracleCommand(query, conn);
+                    command.ExecuteNonQuery();
+                }
+                gewijzigd = true;
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return gewijzigd;
+        }
+
+        public bool WijzigFilm(string geselecteerdeFilm, string titel, string genre, string tijdsduur, string regisseur, string taalversie, string ondertiteling, string leeftijd)
+        {
+            bool gewijzigd = false;
+            try
+            {
+                if (titel != "")
+                {
+                    conn.Open();
+                    string query = "UPDATE FILM SET Titel = '" + titel + "' WHERE Titel = '" + geselecteerdeFilm + "'";
+                    command = new OracleCommand(query, conn);
+                    command.ExecuteNonQuery();
+                }
+
+                if (genre != "")
+                {
+                    conn.Open();
+                    string query = "UPDATE FILM SET Genre = '" + genre + "' WHERE Titel = '" + geselecteerdeFilm + "'";
+                    command = new OracleCommand(query, conn);
+                    command.ExecuteNonQuery();
+                }
+
+                if (tijdsduur != "")
+                {
+                    int tijd = Convert.ToInt32(tijdsduur);
+                    conn.Open();
+                    string query = "UPDATE FILM SET Tijdsduur = '" + tijd + "' WHERE Titel = '" + geselecteerdeFilm + "'";
+                    command = new OracleCommand(query, conn);
+                    command.ExecuteNonQuery();
+                }
+
+                if (regisseur != "")
+                {
+                    conn.Open();
+                    string query = "UPDATE FILM SET Regisseur = '" + regisseur + "' WHERE Titel = '" + geselecteerdeFilm + "'";
+                    command = new OracleCommand(query, conn);
+                    command.ExecuteNonQuery();
+                }
+
+                if (taalversie != "")
+                {
+                    conn.Open();
+                    string query = "UPDATE FILM SET Taalversie = '" + taalversie + "' WHERE Titel = '" + geselecteerdeFilm + "'";
+                    command = new OracleCommand(query, conn);
+                    command.ExecuteNonQuery();
+                }
+
+                if (ondertiteling != "")
+                {
+                    conn.Open();
+                    string query = "UPDATE FILM SET Ondertiteling = '" + ondertiteling + "' WHERE Titel = '" + geselecteerdeFilm + "'";
+                    command = new OracleCommand(query, conn);
+                    command.ExecuteNonQuery();
+                }
+
+                if (leeftijd != "")
+                {
+                    int age = Convert.ToInt32(leeftijd);
+                    conn.Open();
+                    string query = "UPDATE FILM SET Leeftijd = '" + age + "' WHERE Titel = '" + geselecteerdeFilm + "'";
+                    command = new OracleCommand(query, conn);
+                    command.ExecuteNonQuery();
+                }
+                gewijzigd = true;
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return gewijzigd;
+        }
+
+        //Hieronder beginnen de Verwijder methodes
+        //Deze methode verwijderd een bioscoop uit de database
+        public bool VerwijderBioscoop(string geselecteerdeBioscoop)
+        {
+            bool verwijderd = false;
+            try
+            {
+                conn.Open();
+                string query = "DELETE FROM BIOSCOOP WHERE Bioscoopnaam = '" + geselecteerdeBioscoop + "'";
+                command = new OracleCommand(query, conn);
+                command.ExecuteNonQuery();
+                verwijderd = true;
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return verwijderd;
+        }
+
+        //Deze methode verwijderd een acteur uit de database
+        public bool VerwijderActeur(string geselecteerdeActeur)
+        {
+            bool verwijderd = false;
+            try
+            {
+                conn.Open();
+                string query = "DELETE FROM ACTEUR WHERE Voornaam = '" + geselecteerdeActeur + "'";
+                command = new OracleCommand(query, conn);
+                command.ExecuteNonQuery();
+                verwijderd = true;
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return verwijderd;
+        }
+
+        //Deze methode verwijderd een film uit de database
+        public bool VerwijderFilm(string geselecteerdeFilm)
+        {
+            bool verwijderd = false;
+            try
+            {
+                conn.Open();
+                string query = "DELETE FROM FILM WHERE Titel = '" + geselecteerdeFilm + "'";
+                command = new OracleCommand(query, conn);
+                command.ExecuteNonQuery();
+                verwijderd = true;
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return verwijderd;
         }
     }
 }
