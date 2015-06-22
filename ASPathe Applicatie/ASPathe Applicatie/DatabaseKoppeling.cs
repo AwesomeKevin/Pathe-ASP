@@ -49,6 +49,22 @@ namespace ASPathe_Applicatie
             return null;
         }
 
+        public bool TestConnectie()
+        {
+            try
+            {
+                conn.Open();
+                return true;
+            }
+            catch(Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
         //Hieronder beginnen de VoegToe methodes
         //Deze methode voegt een bioscoop toe
         public bool VoegBioscoopToe(string bioscoopnaam, string plaats, string adres, string postcode)

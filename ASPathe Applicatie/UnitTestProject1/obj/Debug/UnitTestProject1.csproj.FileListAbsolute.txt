@@ -1,0 +1,8 @@
+C:\Users\Kevin Kopp\Documents\GitHub\Pathe-ASP\ASPathe Applicatie\UnitTestProject1\bin\Debug\UnitTestProject1.dll
+C:\Users\Kevin Kopp\Documents\GitHub\Pathe-ASP\ASPathe Applicatie\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
+C:\Users\Kevin Kopp\Documents\GitHub\Pathe-ASP\ASPathe Applicatie\UnitTestProject1\bin\Debug\ASPathe Applicatie.dll
+C:\Users\Kevin Kopp\Documents\GitHub\Pathe-ASP\ASPathe Applicatie\UnitTestProject1\bin\Debug\Oracle.DataAccess.dll
+C:\Users\Kevin Kopp\Documents\GitHub\Pathe-ASP\ASPathe Applicatie\UnitTestProject1\bin\Debug\ASPathe Applicatie.pdb
+C:\Users\Kevin Kopp\Documents\GitHub\Pathe-ASP\ASPathe Applicatie\UnitTestProject1\obj\Debug\UnitTestProject1.csprojResolveAssemblyReference.cache
+C:\Users\Kevin Kopp\Documents\GitHub\Pathe-ASP\ASPathe Applicatie\UnitTestProject1\obj\Debug\UnitTestProject1.dll
+C:\Users\Kevin Kopp\Documents\GitHub\Pathe-ASP\ASPathe Applicatie\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
